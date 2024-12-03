@@ -25,12 +25,14 @@ pub fn part_one(input: &str) -> Option<u32> {
 
 pub fn part_two(input: &str) -> Option<u32> {
     let mut left_nums = vec![];
-    let mut right_nums: HashMap<u32,u32> = HashMap::new();
+    let mut right_nums: HashMap<u32, u32> = HashMap::new();
 
     for line in input.lines() {
         let (left, right) = line.split_at(line.find(' ')?);
         left_nums.push(left.parse::<u32>().unwrap());
-        *right_nums.entry(right.trim().parse::<u32>().unwrap()).or_default() += 1;
+        *right_nums
+            .entry(right.trim().parse::<u32>().unwrap())
+            .or_default() += 1;
     }
 
     let mut total = 0;
