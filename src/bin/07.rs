@@ -7,11 +7,10 @@ pub fn part_one(input: &str) -> Option<u64> {
     for line in input.lines() {
         let (value, numbers) = line.split_once(":").unwrap();
         let target: u64 = value.parse().unwrap();
-        let n: Vec<&str> = numbers.trim().split_whitespace().collect();
+        let n: Vec<&str> = numbers.split_whitespace().collect();
         let f: Vec<&str> = n
             .iter()
-            .interleave(vec![&""; n.len() - 1])
-            .map(|s| *s)
+            .interleave(vec![&""; n.len() - 1]).copied()
             .collect();
 
         let permutations = get_permutations(f, 1, false);
@@ -24,12 +23,10 @@ pub fn part_one(input: &str) -> Option<u64> {
                     } else {
                         t += p[i + 1].parse::<u64>().unwrap();
                     }
+                } else if i == 1 {
+                    t += p[i - 1].parse::<u64>().unwrap() * p[i + 1].parse::<u64>().unwrap();
                 } else {
-                    if i == 1 {
-                        t += p[i - 1].parse::<u64>().unwrap() * p[i + 1].parse::<u64>().unwrap();
-                    } else {
-                        t *= p[i + 1].parse::<u64>().unwrap();
-                    }
+                    t *= p[i + 1].parse::<u64>().unwrap();
                 }
                 if t > target {
                     break;
@@ -74,11 +71,10 @@ pub fn part_two(input: &str) -> Option<u64> {
     for line in input.lines() {
         let (value, numbers) = line.split_once(":").unwrap();
         let target: u64 = value.parse().unwrap();
-        let n: Vec<&str> = numbers.trim().split_whitespace().collect();
+        let n: Vec<&str> = numbers.split_whitespace().collect();
         let f: Vec<&str> = n
             .iter()
-            .interleave(vec![&""; n.len() - 1])
-            .map(|s| *s)
+            .interleave(vec![&""; n.len() - 1]).copied()
             .collect();
 
         let permutations = get_permutations(f, 1, true);
@@ -97,16 +93,14 @@ pub fn part_two(input: &str) -> Option<u64> {
                     } else {
                         t *= p[i + 1].parse::<u64>().unwrap();
                     }
+                } else if i == 1 {
+                    let mut concatenated = p[i - 1].to_owned();
+                    concatenated.push_str(p[i + 1]);
+                    t += concatenated.parse::<u64>().unwrap();
                 } else {
-                    if i == 1 {
-                        let mut concatenated = p[i - 1].to_owned();
-                        concatenated.push_str(p[i + 1]);
-                        t += concatenated.parse::<u64>().unwrap();
-                    } else {
-                        let mut concatenated = t.to_string();
-                        concatenated.push_str(p[i + 1]);
-                        t = concatenated.parse::<u64>().unwrap();
-                    }
+                    let mut concatenated = t.to_string();
+                    concatenated.push_str(p[i + 1]);
+                    t = concatenated.parse::<u64>().unwrap();
                 }
                 if t > target {
                     break;
