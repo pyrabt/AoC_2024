@@ -17,76 +17,44 @@ pub fn part_one(input: &str) -> Option<u32> {
             }
 
             //left
-            if x >= 3 {
-                if search_grid[y][x - 1] == 'M'
-                    && search_grid[y][x - 2] == 'A'
-                    && search_grid[y][x - 3] == 'S'
-                {
-                    total += 1;
-                }
+            if x >= 3 && search_grid[y][x - 1] == 'M'
+                    && search_grid[y][x - 2] == 'A' && search_grid[y][x - 3] == 'S' {
+                total += 1;
             }
             //left up
-            if x >= 3 && y >= 3 {
-                if search_grid[y - 1][x - 1] == 'M'
-                    && search_grid[y - 2][x - 2] == 'A'
-                    && search_grid[y - 3][x - 3] == 'S'
-                {
-                    total += 1;
-                }
+            if x >= 3 && y >= 3 && search_grid[y - 1][x - 1] == 'M'
+                    && search_grid[y - 2][x - 2] == 'A' && search_grid[y - 3][x - 3] == 'S' {
+                total += 1;
             }
             //up
-            if y >= 3 {
-                if search_grid[y - 1][x] == 'M'
-                    && search_grid[y - 2][x] == 'A'
-                    && search_grid[y - 3][x] == 'S'
-                {
-                    total += 1;
-                }
+            if y >= 3 && search_grid[y - 1][x] == 'M'
+                    && search_grid[y - 2][x] == 'A' && search_grid[y - 3][x] == 'S' {
+                total += 1;
             }
             //right up
-            if x <= max_x && y >= 3 {
-                if search_grid[y - 1][x + 1] == 'M'
-                    && search_grid[y - 2][x + 2] == 'A'
-                    && search_grid[y - 3][x + 3] == 'S'
-                {
-                    total += 1;
-                }
+            if x <= max_x && y >= 3 && search_grid[y - 1][x + 1] == 'M'
+                    && search_grid[y - 2][x + 2] == 'A' && search_grid[y - 3][x + 3] == 'S' {
+                total += 1;
             }
             //right
-            if x <= max_x {
-                if search_grid[y][x + 1] == 'M'
-                    && search_grid[y][x + 2] == 'A'
-                    && search_grid[y][x + 3] == 'S'
-                {
-                    total += 1;
-                }
+            if x <= max_x && search_grid[y][x + 1] == 'M'
+                    && search_grid[y][x + 2] == 'A' && search_grid[y][x + 3] == 'S' {
+                total += 1;
             }
             //right down
-            if x <= max_x && y <= max_y {
-                if search_grid[y + 1][x + 1] == 'M'
-                    && search_grid[y + 2][x + 2] == 'A'
-                    && search_grid[y + 3][x + 3] == 'S'
-                {
-                    total += 1;
-                }
+            if x <= max_x && y <= max_y && search_grid[y + 1][x + 1] == 'M'
+                    && search_grid[y + 2][x + 2] == 'A' && search_grid[y + 3][x + 3] == 'S' {
+                total += 1;
             }
             //down
-            if y <= max_y {
-                if search_grid[y + 1][x] == 'M'
-                    && search_grid[y + 2][x] == 'A'
-                    && search_grid[y + 3][x] == 'S'
-                {
-                    total += 1;
-                }
+            if y <= max_y && search_grid[y + 1][x] == 'M'
+                    && search_grid[y + 2][x] == 'A' && search_grid[y + 3][x] == 'S' {
+                total += 1;
             }
             //left down
-            if x >= 3 && y <= max_y {
-                if search_grid[y + 1][x - 1] == 'M'
-                    && search_grid[y + 2][x - 2] == 'A'
-                    && search_grid[y + 3][x - 3] == 'S'
-                {
-                    total += 1;
-                }
+            if x >= 3 && y <= max_y && search_grid[y + 1][x - 1] == 'M'
+                    && search_grid[y + 2][x - 2] == 'A' && search_grid[y + 3][x - 3] == 'S' {
+                total += 1;
             }
         }
     }

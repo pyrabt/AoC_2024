@@ -16,7 +16,7 @@ pub fn part_one(input: &str) -> Option<u32> {
 
             let num_rules = rules.get(&update[i]).unwrap();
             for rule in num_rules {
-                if update.contains(&rule) && update[..i].contains(rule) {
+                if update.contains(rule) && update[..i].contains(rule) {
                     valid_update = false;
                     break;
                 }
@@ -44,7 +44,7 @@ pub fn part_two(input: &str) -> Option<u32> {
 
             let num_rules = rules.get(&update[i]).unwrap();
             for rule in num_rules {
-                if update.contains(&rule) && update[..i].contains(rule) {
+                if update.contains(rule) && update[..i].contains(rule) {
                     valid_update = false;
                     break;
                 }
@@ -84,7 +84,7 @@ fn get_rules_and_updates(input: &str) -> (HashMap<&str, Vec<&str>>, Vec<Vec<&str
             let (rule_num, rule_before) = line.split_once('|').unwrap();
             rules
                 .entry(rule_num)
-                .or_insert(Vec::new())
+                .or_default()
                 .push(rule_before);
         }
     }

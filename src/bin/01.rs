@@ -17,7 +17,7 @@ pub fn part_one(input: &str) -> Option<u32> {
     right_nums.sort_unstable();
 
     for i in 0..left_nums.len() {
-        total += (left_nums[i] - right_nums[i]).abs() as u32;
+        total += (left_nums[i] - right_nums[i]).unsigned_abs();
     }
 
     Some(total)

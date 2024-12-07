@@ -35,14 +35,12 @@ pub fn part_one(input: &str) -> Option<u32> {
             } else {
                 curr_dir = (curr_dir + 1) % 4;
             }
+        } else if guard_pos.1 == 0 {
+            exited = true;
+        } else if guard_pos.1 > 0 && grid[guard_pos.0][guard_pos.1 - 1] != '#' {
+            guard_pos = (guard_pos.0, guard_pos.1 - 1);
         } else {
-            if guard_pos.1 == 0 {
-                exited = true;
-            } else if guard_pos.1 > 0 && grid[guard_pos.0][guard_pos.1 - 1] != '#' {
-                guard_pos = (guard_pos.0, guard_pos.1 - 1);
-            } else {
-                curr_dir = (curr_dir + 1) % 4;
-            }
+            curr_dir = (curr_dir + 1) % 4;
         }
     }
 
@@ -122,14 +120,12 @@ fn stuck_in_loop(grid: &Vec<Vec<char>>, starting_pos: &(usize, usize)) -> bool {
             } else {
                 curr_dir = (curr_dir + 1) % 4;
             }
+        } else if guard_pos.1 == 0 {
+            exited = true;
+        } else if guard_pos.1 > 0 && grid[guard_pos.0][guard_pos.1 - 1] != '#' {
+            guard_pos = (guard_pos.0, guard_pos.1 - 1);
         } else {
-            if guard_pos.1 == 0 {
-                exited = true;
-            } else if guard_pos.1 > 0 && grid[guard_pos.0][guard_pos.1 - 1] != '#' {
-                guard_pos = (guard_pos.0, guard_pos.1 - 1);
-            } else {
-                curr_dir = (curr_dir + 1) % 4;
-            }
+            curr_dir = (curr_dir + 1) % 4;
         }
         step_cnt += 1;
         if exited || step_cnt >= cutoff {
