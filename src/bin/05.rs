@@ -82,10 +82,7 @@ fn get_rules_and_updates(input: &str) -> (HashMap<&str, Vec<&str>>, Vec<Vec<&str
             updates.push(line.split(',').collect());
         } else {
             let (rule_num, rule_before) = line.split_once('|').unwrap();
-            rules
-                .entry(rule_num)
-                .or_default()
-                .push(rule_before);
+            rules.entry(rule_num).or_default().push(rule_before);
         }
     }
 
