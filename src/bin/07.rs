@@ -10,7 +10,8 @@ pub fn part_one(input: &str) -> Option<u64> {
         let n: Vec<&str> = numbers.split_whitespace().collect();
         let f: Vec<&str> = n
             .iter()
-            .interleave(vec![&""; n.len() - 1]).copied()
+            .interleave(vec![&""; n.len() - 1])
+            .copied()
             .collect();
 
         let permutations = get_permutations(f, 1, false);
@@ -74,7 +75,8 @@ pub fn part_two(input: &str) -> Option<u64> {
         let n: Vec<&str> = numbers.split_whitespace().collect();
         let f: Vec<&str> = n
             .iter()
-            .interleave(vec![&""; n.len() - 1]).copied()
+            .interleave(vec![&""; n.len() - 1])
+            .copied()
             .collect();
 
         let permutations = get_permutations(f, 1, true);
