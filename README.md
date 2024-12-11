@@ -11,6 +11,8 @@
 | [Day 5](https://adventofcode.com/2024/day/5) | ⭐ | ⭐ |
 | [Day 6](https://adventofcode.com/2024/day/6) | ⭐ | ⭐ |
 | [Day 7](https://adventofcode.com/2024/day/7) | ⭐ | ⭐ |
+| [Day 9](https://adventofcode.com/2024/day/9) | ⭐ | ⭐ |
+| [Day 10](https://adventofcode.com/2024/day/10) | ⭐ | ⭐ |
 <!--- advent_readme_stars table --->
 <!--- benchmarking table --->
 ## Benchmarks
